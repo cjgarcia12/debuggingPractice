@@ -1,17 +1,35 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static double arrayAvg(int[] numbers) {
+        double sum = 0;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Uncomment the next line to introduce a null pointer exception
+        // numbers = null;
+
+        try {
+            for (int number : numbers) {
+                sum += number;
+            }
+        } catch (NullPointerException e) {
+            System.out.println("List is empty, Null pointer");
+            return 0; // Return 0 or handle appropriately
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index out of bounds");
         }
+
+        // Uncomment the next line to introduce a logic error
+        // return sum / (numbers.length + 1);
+
+        return sum / numbers.length;
+    }
+
+    public static void main(String[] args) {
+        // Test with an array of numbers 1, 2, 3, 4, 5
+        int[] numbers = {1, 2, 3, 4, 5};
+        System.out.println(arrayAvg(numbers)); // Expected output: 3.0
+
+        // Uncomment the next line to introduce an array index out of bounds exception
+        // int test = numbers[10];
     }
 }
